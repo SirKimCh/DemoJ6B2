@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Trần Văn Nam",
+    "gender": true,
+    "mark": 8.2,
+    "contact": {
+      "email": "namtran@gmail.com",
+      "phone": "0987654321"
+    },
+    "subjects": [
+      "Toán",
+      "Văn học",
+      "Lịch sử"
+    ]
+  },
+  {
+    "name": "Nguyễn Thị Mai",
+    "gender": false,
+    "mark": 9.1,
+    "contact": {
+      "email": "maithienu@gmail.com",
+      "phone": "0123456789"
+    },
+    "subjects": [
+      "Sinh học",
+      "Hóa học",
+      "Tiếng Anh"
+    ]
+  },
+  {
+    "name": "Lê Minh Hoàng",
+    "gender": true,
+    "mark": 7.8,
+    "contact": {
+      "email": "hoangminhle@gmail.com",
+      "phone": "0345678901"
+    },
+    "subjects": [
+      "Địa lý",
+      "Giáo dục công dân",
+      "Tin học"
+    ]
+  },
+  {
+    "name": "Phạm Thị Lan",
+    "gender": false,
+    "mark": 9.5,
+    "contact": {
+      "email": "lanpham@gmail.com",
+      "phone": "0876543210"
+    },
+    "subjects": [
+      "Kỹ thuật",
+      "Nghệ thuật",
+      "Thể dục thể thao"
+    ]
+  },
+  {
+    "name": "Đinh Quang Huy",
+    "gender": true,
+    "mark": 8.3,
+    "contact": {
+      "email": "huyquangdinh@gmail.com",
+      "phone": "0987654321"
+    },
+    "subjects": [
+      "Kinh tế",
+      "Quản trị kinh doanh",
+      "Ngôn ngữ học"
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Hello Home</h1>
+<ul>
+    <img th:src="@{/image/FPT_Polytechnic.png}">
+    <nav th:replace="~{layout/menu.html}"></nav>
+    <li th:text="${msg}"></li>
+    <ul th:object="${student}">
+        <li th:text="${student.name}"></li>
+        <li th:text="${student.gender} ? 'Male' : 'Female'"></li>
+        <li th:text="${student.mark}"></li>
+        <li th:text="${student.contact.email}"></li>
+        <ul th:each="subject : ${student.subjects}">
+            <li th:text="${subject}"></li>
+        </ul>
+    </ul>
+</ul>
+<a th:href="@{/student(index=0)}" class="btn">View Student</a>
+</body>
+</html>

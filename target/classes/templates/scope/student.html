@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<h1>Hello Student</h1>
+<div th:if="${student != null}">
+    <p>Name: <span th:text="${student.name}"></span></p>
+    <p>Gender: <span th:text="${student.gender ? 'Male' : 'Female'}"></span></p>
+    <p>Mark: <span th:text="${student.mark}"></span></p>
+    <p>Email: <span th:text="${student.contact.email}"></span></p>
+    <p>Phone: <span th:text="${student.contact.phone}"></span></p>
+    <ul>
+        <li th:each="subject : ${student.subjects}" th:text="${subject}"></li>
+    </ul>
+</div>
+<div>
+    <a th:if="${hasPrev}" th:href="@{/student(index=${currentIndex - 1})}">Previous</a>
+    <a th:if="${hasNext}" th:href="@{/student(index=${currentIndex + 1})}">Next</a>
+</div>
+</body>
+</html>
