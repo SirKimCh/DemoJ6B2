@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Hello Student</h1>
-<div th:if="${student != null}">
-    <p>Name: <span th:text="${student.name}"></span></p>
-    <p>Gender: <span th:text="${student.gender ? 'Male' : 'Female'}"></span></p>
-    <p>Mark: <span th:text="${student.mark}"></span></p>
-    <p>Email: <span th:text="${student.contact.email}"></span></p>
-    <p>Phone: <span th:text="${student.contact.phone}"></span></p>
-    <ul>
-        <li th:each="subject : ${student.subjects}" th:text="${subject}"></li>
-    </ul>
+<div class="container mt-5">
+    <h1>Hello Student</h1>
+    <div th:if="${student != null}" class="mb-4">
+        <p>Name: <span th:text="${student.name}"></span></p>
+        <p>Gender: <span th:text="${student.gender ? 'Male' : 'Female'}"></span></p>
+        <p>Mark: <span th:text="${student.mark}"></span></p>
+        <p>Email: <span th:text="${student.contact.email}"></span></p>
+        <p>Phone: <span th:text="${student.contact.phone}"></span></p>
+        <div>Subjects:
+            <div th:each="subject : ${student.subjects}">
+                <span class="badge badge-primary" th:text="${subject}"></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a th:if="${hasPrev}" th:href="@{/student(index=${currentIndex - 1})}" class="btn btn-outline-primary">Previous</a>
+        <a th:if="${hasNext}" th:href="@{/student(index=${currentIndex + 1})}" class="btn btn-outline-primary">Next</a>
+    </div>
 </div>
-<div>
-    <a th:if="${hasPrev}" th:href="@{/student(index=${currentIndex - 1})}">Previous</a>
-    <a th:if="${hasNext}" th:href="@{/student(index=${currentIndex + 1})}">Next</a>
-</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -3,23 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>Hello Home</h1>
-<ul>
-    <img th:src="@{/image/FPT_Polytechnic.png}">
-    <nav th:replace="~{layout/menu.html}"></nav>
-    <li th:text="${msg}"></li>
-    <ul th:object="${student}">
-        <li th:text="${student.name}"></li>
-        <li th:text="${student.gender} ? 'Male' : 'Female'"></li>
-        <li th:text="${student.mark}"></li>
-        <li th:text="${student.contact.email}"></li>
-        <ul th:each="subject : ${student.subjects}">
-            <li th:text="${subject}"></li>
-        </ul>
-    </ul>
-</ul>
-<a th:href="@{/student(index=0)}" class="btn">View Student</a>
+<div class="container mt-5">
+    <h1 class="mb-4">Welcome to the Student Management System</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="navbar-nav">
+            <a th:href="@{/}" class="nav-item nav-link">Home</a>
+            <a th:href="@{/student/create}" class="nav-item nav-link">Create New Student</a>
+            <a th:href="@{/student(index=0)}" class="nav-item nav-link">View Students</a>
+        </div>
+    </nav>
+    <div class="card">
+        <img th:src="@{/image/FPT_Polytechnic.png}" class="card-img-top" alt="School Logo">
+        <div class="card-body">
+            <h5 class="card-title">Student Information</h5>
+            <p class="card-text" th:text="${msg}"></p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" th:text="'Name: ' + ${student.name}"></li>
+                <li class="list-group-item" th:text="'Gender: ' + (${student.gender} ? 'Male' : 'Female')"></li>
+                <li class="list-group-item" th:text="'Mark: ' + ${student.mark}"></li>
+                <li class="list-group-item" th:text="'Email: ' + ${student.contact.email}"></li>
+                <li class="list-group-item">Subjects:
+                    <ul>
+                        <li th:each="subject : ${student.subjects}" th:text="${subject}"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <form th:action="@{/student/create}" th:object="${student}" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required class="form-control">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback d-block">Name Error</div>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" th:field="*{gender}" class="form-control">
+                <option value="true">Male</option>
+                <option value="false">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mark">Mark:</label>
+            <input type="number" step="0.1" id="mark" th:field="*{mark}" required class="form-control">
+            <div th:if="${#fields.hasErrors('mark')}" th:errors="*{mark}" class="invalid-feedback d-block">Mark Error</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{contact.email}" required class="form-control">
+            <div th:if="${#fields.hasErrors('contact.email')}" th:errors="*{contact.email}" class="invalid-feedback d-block">Email Error</div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" th:field="*{contact.phone}" required class="form-control">
+            <div th:if="${#fields.hasErrors('contact.phone')}" th:errors="*{contact.phone}" class="invalid-feedback d-block">Phone Error</div>
+        </div>
+        <div class="form-group">
+            <label for="subjects">Subjects:</label>
+            <input type="text" id="subjects" th:field="*{subjects}" placeholder="Separate subjects with commas" required class="form-control">
+            <div th:if="${#fields.hasErrors('subjects')}" th:errors="*{subjects}" class="invalid-feedback d-block">Subjects Error</div>
+        </div>
+        <div id="subject-tags" class="tags-container"></div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var subjectsInput = document.getElementById('subjects');
+        var tagsContainer = document.getElementById('subject-tags');
+
+        function updateTags() {
+            var subjects = subjectsInput.value.split(',').map(function(subject) {
+                return subject.trim();
+            }).filter(function(subject) {
+                return subject !== "";
+            });
+
+            // Clear existing tags
+            tagsContainer.innerHTML = '';
+
+            // Create and append tags
+            subjects.forEach(function(subject) {
+                var tag = document.createElement('span');
+                tag.className = 'subject-tag'; // Add your styling class here
+                tag.textContent = subject;
+                tagsContainer.appendChild(tag);
+            });
+        }
+
+        subjectsInput.addEventListener('input', updateTags);
+    });
+</script>
+
+<style>
+    .subject-tag {
+        display: inline-block;
+        margin: 2px;
+        padding: 5px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+    }
+</style>
+</body>
+</html>
